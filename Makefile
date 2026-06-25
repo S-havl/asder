@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
 TARGET = asder
-SRC = asder.c
+SRC = src/asder.c
 
 all: $(TARGET)
 
