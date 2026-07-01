@@ -28,7 +28,7 @@ int main(void)
     char canvas[CANVAS_HEIGHT][CANVAS_WIDTH];
     int canvas_size = sizeof(canvas);
 
-    VecScreen_center screen_center = {
+    VecScreen_center_t screen_center = {
         .cx = CANVAS_WIDTH / 2,
         .cy = CANVAS_HEIGHT / 2
     };
