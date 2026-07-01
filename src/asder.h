@@ -6,4 +6,4 @@
 typedef struct {
     int cx;
     int cy;
-} VecScreen_center;
+} VecScreen_center_t;
