@@ -1,17 +1,22 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c11
+CFLAGS = -Wall -Wextra -Werror -pedantic -Iinclude -std=gnu11
 TARGET = asder
-SRC = src/asder.c
+
+SRC = src/main.c src/engine.c
+OBJ = $(SRC:.c=.o)
 
 all: $(TARGET)
 
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
 
-run:
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+run: all
 	./$(TARGET)
 
 clean:
-	rm -rf $(TARGET)
+	rm -f src/*.o $(TARGET)
 
 .PHONY: all clean run
