@@ -20,7 +20,19 @@ This project was created as an experiment to gain a deeper understanding of two-
 ## Features
 * Uses a 2D framebuffer.
 * Efficient memory manipulation using the C standard library (`memset`).
+* Draw pixel.
+* Draw line.
+* Render canvas.
+* Terminal mode.
+* Input keys.
 * Modular architecture ready to serve as the foundation for a rendering engine.
+
+## Controls
+* Up    = W
+* Down  = S
+* Right = D
+* Left  = A
+* Off   = Q
 
 ## Requirements
 * GCC compiler.
