@@ -2,8 +2,18 @@
 
 A basic ASCII art console renderer written in **pure C**.
 
-<img src="images/asder1.png" width="50%">
-<img src="images/asder2.png" width="50%">
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="images/asder1.png" width="350"><br>
+      <b>start</b>
+    </td>
+    <td align="center">
+      <img src="images/asder2.png" width="350"><br>
+      <b>movement</b>
+    </td>
+  </tr>
+</table>
 
 This project was created as an experiment to gain a deeper understanding of two-dimensional arrays and the direct manipulation of contiguous memory blocks in C without relying on external dependencies.
 
