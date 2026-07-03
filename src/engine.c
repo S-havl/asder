@@ -3,8 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-Canvas* init_canvas(int width, int height) {
-    Canvas* canvas = malloc(sizeof(Canvas));
+Canvas_t* init_canvas(int width, int height)
+{
+    Canvas_t* canvas = malloc(sizeof(Canvas_t));
     if (!canvas) return NULL;
     
     canvas->width = width;
@@ -17,20 +18,23 @@ Canvas* init_canvas(int width, int height) {
     return canvas;
 }
 
-void free_canvas(Canvas* canvas) {
+void free_canvas(Canvas_t* canvas)
+{
     if (canvas) {
         free(canvas->buffer);
         free(canvas);
     }
 }
 
-void draw_pixel(Canvas* canvas, int x, int y, char c) {
+void draw_pixel(Canvas_t* canvas, int x, int y, char c)
+{
     if (x >= 0 && x < canvas->width && y >= 0 && y < canvas->height) {
         canvas->buffer[y * canvas->width + x] = c;
     }
 }
 
-void draw_line(Canvas* canvas, int x0, int y0, int x1, int y1, char c) {
+void draw_line(Canvas_t* canvas, int x0, int y0, int x1, int y1, char c)
+{
     int dx = abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
     int dy = -abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
     int err = dx + dy, e2;
@@ -44,7 +48,8 @@ void draw_line(Canvas* canvas, int x0, int y0, int x1, int y1, char c) {
     }
 }
 
-void render_canvas(Canvas* canvas) {
+void render_canvas(Canvas_t* canvas)
+{
     printf("\033[H");
     
     for (int y = 0; y < canvas->height; y++) {
