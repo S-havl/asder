@@ -5,7 +5,8 @@
 #include <unistd.h>
 #include <string.h>
 
-void set_terminal_mode(int enable) {
+void set_terminal_mode(int enable)
+{
     static struct termios oldt;
     if (enable) {
         struct termios newt;
@@ -22,8 +23,9 @@ void set_terminal_mode(int enable) {
     }
 }
 
-int main(void) {
-    Canvas* screen = init_canvas(100, 40);
+int main(void)
+{
+    Canvas_t* screen = init_canvas(100, 40);
     if (!screen) return EXIT_FAILURE;
 
     int player_x = 50;
