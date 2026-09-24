@@ -1,9 +1,9 @@
 #include "../include/asder.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <termios.h>
 #include <unistd.h>
-#include <string.h>
 
 void set_terminal_mode(int enable)
 {
@@ -13,10 +13,10 @@ void set_terminal_mode(int enable)
         tcgetattr(STDIN_FILENO, &oldt);
         newt = oldt;
         newt.c_lflag &= ~(ICANON | ECHO);
-        
-        newt.c_cc[VMIN] = 0;
+
+        newt.c_cc[VMIN]  = 0;
         newt.c_cc[VTIME] = 0;
-        
+
         tcsetattr(STDIN_FILENO, TCSANOW, &newt);
     } else {
         tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
@@ -26,10 +26,11 @@ void set_terminal_mode(int enable)
 int main(void)
 {
     Canvas_t* screen = init_canvas(100, 40);
-    if (!screen) return EXIT_FAILURE;
+    if (!screen)
+        return EXIT_FAILURE;
 
-    int player_x = 50;
-    int player_y = 20;
+    int  player_x = 50;
+    int  player_y = 20;
     char input;
 
     printf("\033[2J");
@@ -44,14 +45,19 @@ int main(void)
         render_canvas(screen);
 
         if (read(STDIN_FILENO, &input, 1) == 1) {
-            if (input == 'q') break;
-            
-            if (input == 'w' && player_y > 0) player_y--;
-            if (input == 's' && player_y < screen->height - 1) player_y++;
-            if (input == 'a' && player_x > 0) player_x--;
-            if (input == 'd' && player_x < screen->width - 1) player_x++;
+            if (input == 'q')
+                break;
+
+            if (input == 'w' && player_y > 0)
+                player_y--;
+            if (input == 's' && player_y < screen->height - 1)
+                player_y++;
+            if (input == 'a' && player_x > 0)
+                player_x--;
+            if (input == 'd' && player_x < screen->width - 1)
+                player_x++;
         }
-        
+
         usleep(30000);
     }
 
